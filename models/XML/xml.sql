@@ -1,9 +1,9 @@
 SELECT
-    s.value:"Transaction_ID"::int AS "Transaction_ID",
-    s.value:"Customer_ID"::string AS "Customer_ID",
-    s.value:"Transaction_Date"::string AS "Transaction_Date",
-    s.value:"Transaction_Type"::int AS "Transaction_Type",
-    s.value:"Transaction_Amount"::string AS "Transaction_Amount",
-    s.value:"Transaction_Mode"::string AS "Transaction_Mode"
+XMLGET(s.value, 'Transaction_ID'):"$"::string as "Transaction_ID",
+XMLGET(s.value,'Customer_ID'):"$"::int as "Customer_ID",
+XMLGET(s.value,'Transaction_Date'):"$"::date as "Transaction_Date",
+XMLGET(s.value, 'Transaction_Type'):"$"::string as "Transaction_Type",
+XMLGET(s.value, 'Transaction_Amount'):"$"::float as "Transaction_Amount",
+XMLGET(s.value, 'Transaction_Mode'):"$"::string as "Transaction_Mode"
 FROM MYDB.CS2_BLOB.CS_2_XML,
 LATERAL FLATTEN(TO_ARRAY(MYDB.CS2_BLOB.CS_2_XML._DATA: "$")) s
