@@ -42,3 +42,5 @@ models:
       +materialized: table
     XML:
       +materialized: table
+    trans:
+      +materialized: table
