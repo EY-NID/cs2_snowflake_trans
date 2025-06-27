@@ -1,0 +1,1 @@
+SELECT * from  MYDB.DBT_NGUPTA.JOIN  where ACCOUNT_TYPE='Credit Card'
